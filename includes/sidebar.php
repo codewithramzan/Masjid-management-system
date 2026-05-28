@@ -1,39 +1,48 @@
-<div class="sidebar">
+<input type="text"
+       id="searchInput"
+       class="form-control mb-3"
+       placeholder="Search Member">
+<a href="../../modules/members/add-member.php">
 
-    <h4 class="text-white text-center py-3">
-        Masjid System
-    </h4>
+    <i class="fa fa-user-plus"></i>
 
-    <a href="#">
-        <i class="fa fa-dashboard"></i>
-        Dashboard
-    </a>
-
-    <a href="#">
-        <i class="fa fa-users"></i>
-        Members
-    </a>
-
-    <a href="#">
-        <i class="fa fa-money-bill"></i>
-        Monthly Payments
-    </a>
-
-    <a href="#">
-        <i class="fa fa-mosque"></i>
-        Friday Chanda
-    </a>
-
-    <a href="#">
-        <i class="fa fa-file"></i>
-        Reports
-    </a>
-
-</div>
-<a href="../../auth/logout.php">
-
-    <i class="fa fa-sign-out-alt"></i>
-
-    Logout
+    Add Member
 
 </a>
+
+<a href="../../modules/members/manage-members.php">
+
+    <i class="fa fa-users"></i>
+
+    Manage Members
+
+</a>
+<script>
+
+document.getElementById("searchInput")
+.addEventListener("keyup", function() {
+
+    let value =
+    this.value.toLowerCase();
+
+    let rows =
+    document.querySelectorAll("tbody tr");
+
+    rows.forEach(function(row) {
+
+        row.style.display =
+        row.innerText.toLowerCase()
+        .includes(value)
+        ? ""
+        : "none";
+
+    });
+
+});
+
+</script>
+<?php
+
+include('includes/footer.php');
+
+?>
