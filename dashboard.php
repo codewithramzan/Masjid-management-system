@@ -1,12 +1,12 @@
-<?php
+<?php 
 
 include('config/session.php');
 include('config/database.php');
 
 include('includes/header.php');
 include('includes/sidebar.php');
-
 ?>
+
 <div class="main-content">
 
     <h2 class="mb-4">
@@ -14,13 +14,13 @@ include('includes/sidebar.php');
     </h2>
 
     <div class="row">
-        <?php
+    <?php
 
-$memberQuery = "SELECT COUNT(*) AS total_members FROM members";
-$memberResult = mysqli_query($conn, $memberQuery);
-$memberData = mysqli_fetch_assoc($memberResult);
+        $memberQuery = "SELECT COUNT(*) AS total_members FROM members";
+        $memberResult = mysqli_query($conn, $memberQuery);
+        $memberData = mysqli_fetch_assoc($memberResult);
 
-?>
+    ?>
 <div class="col-md-3 mb-4">
 
     <div class="card-box bg-success">
@@ -34,18 +34,18 @@ $memberData = mysqli_fetch_assoc($memberResult);
     </div>
 
 </div>
-<?php
+    <?php
 
-$collectionQuery = "
-SELECT SUM(amount) AS total_collection
-FROM monthly_payments
-";
+    $collectionQuery = "
+    SELECT SUM(amount) AS total_collection
+    FROM monthly_payments
+    ";
 
-$collectionResult = mysqli_query($conn, $collectionQuery);
+    $collectionResult = mysqli_query($conn, $collectionQuery);
 
-$collectionData = mysqli_fetch_assoc($collectionResult);
+    $collectionData = mysqli_fetch_assoc($collectionResult);
 
-?>
+   ?>
 <div class="col-md-3 mb-4">
 
     <div class="card-box bg-primary">
@@ -64,18 +64,18 @@ $collectionData = mysqli_fetch_assoc($collectionResult);
     </div>
 
 </div>
-<?php
+    <?php
 
-$fridayQuery = "
-SELECT SUM(amount) AS friday_total
-FROM friday_collections
-";
+    $fridayQuery = "
+    SELECT SUM(amount) AS friday_total
+    FROM friday_collections
+    ";
 
-$fridayResult = mysqli_query($conn, $fridayQuery);
+    $fridayResult = mysqli_query($conn, $fridayQuery);
 
-$fridayData = mysqli_fetch_assoc($fridayResult);
+    $fridayData = mysqli_fetch_assoc($fridayResult);
 
-?>
+    ?>
 <div class="col-md-3 mb-4">
 
     <div class="card-box bg-warning">
@@ -94,18 +94,18 @@ $fridayData = mysqli_fetch_assoc($fridayResult);
     </div>
 
 </div>
-<?php
+    <?php
 
-$expenseQuery = "
-SELECT SUM(amount) AS total_expense
-FROM expenses
-";
+    $expenseQuery = "
+    SELECT SUM(amount) AS total_expense
+    FROM expenses
+    ";
 
-$expenseResult = mysqli_query($conn, $expenseQuery);
+    $expenseResult = mysqli_query($conn, $expenseQuery);
 
-$expenseData = mysqli_fetch_assoc($expenseResult);
+    $expenseData = mysqli_fetch_assoc($expenseResult);
 
-?>
+    ?>
 <div class="col-md-3 mb-4">
 
     <div class="card-box bg-danger">
@@ -125,20 +125,20 @@ $expenseData = mysqli_fetch_assoc($expenseResult);
 
 </div>
 </div>
-<?php
+    <?php
 
-$totalIncome =
-($collectionData['total_collection'] ?? 0)
-+
-($fridayData['friday_total'] ?? 0);
+    $totalIncome =
+    ($collectionData['total_collection'] ?? 0)
+    +
+    ($fridayData['friday_total'] ?? 0);
 
-$totalExpense =
-($expenseData['total_expense'] ?? 0);
+    $totalExpense =
+    ($expenseData['total_expense'] ?? 0);
 
-$remainingFund =
-$totalIncome - $totalExpense;
+    $remainingFund =
+    $totalIncome - $totalExpense;
 
-?>
+    ?>
 <div class="row">
 
 <div class="col-md-12 mb-4">

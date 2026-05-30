@@ -1,3 +1,8 @@
+<?php
+
+include(__DIR__ . '/../config/constants.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,8 +28,7 @@
     <!-- Custom CSS -->
 
     <link rel="stylesheet"
-    href="../../assets/css/style.css">
-
+href="<?php echo BASE_URL; ?>assets/css/style.css">
 </head>
 
 <body>

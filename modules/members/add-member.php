@@ -45,6 +45,7 @@ if(isset($_POST['add_member']))
 }
 
 ?>
+
 <div class="main-content">
 
 <div class="card p-4">

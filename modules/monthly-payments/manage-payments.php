@@ -8,7 +8,12 @@ include('../../includes/sidebar.php');
 
 $query = "
 
-SELECT *
+SELECT
+
+monthly_payments.*,
+
+members.member_name,
+members.monthly_amount
 
 FROM monthly_payments
 
@@ -16,8 +21,6 @@ INNER JOIN members
 
 ON monthly_payments.member_id =
 members.member_id
-
-WHERE payment_status != 'Paid'
 
 ORDER BY payment_id DESC
 
@@ -33,20 +36,23 @@ mysqli_query($conn, $query);
 
 <h3 class="mb-4">
 
-Unpaid / Partial Members
+Manage Payments
 
 </h3>
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
 
 <thead>
 
 <tr>
 
-<th>Name</th>
-<th>Status</th>
-<th>Paid</th>
+<th>Member</th>
 <th>Required</th>
+<th>Paid</th>
+<th>Remaining</th>
+<th>Status</th>
+<th>Month</th>
+<th>Date</th>
 
 </tr>
 
@@ -55,7 +61,14 @@ Unpaid / Partial Members
 <tbody>
 
 <?php while($row =
-mysqli_fetch_assoc($result)) { ?>
+mysqli_fetch_assoc($result)) {
+
+$remaining =
+$row['monthly_amount']
+-
+$row['amount'];
+
+?>
 
 <tr>
 
@@ -67,7 +80,8 @@ mysqli_fetch_assoc($result)) { ?>
 
 <td>
 
-<?php echo $row['payment_status']; ?>
+Rs.
+<?php echo $row['monthly_amount']; ?>
 
 </td>
 
@@ -81,7 +95,25 @@ Rs.
 <td>
 
 Rs.
-<?php echo $row['monthly_amount']; ?>
+<?php echo $remaining; ?>
+
+</td>
+
+<td>
+
+<?php echo $row['payment_status']; ?>
+
+</td>
+
+<td>
+
+<?php echo $row['payment_month']; ?>
+
+</td>
+
+<td>
+
+<?php echo $row['payment_date']; ?>
 
 </td>
 

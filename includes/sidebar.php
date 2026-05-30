@@ -1,22 +1,31 @@
+
 <input type="text"
        id="searchInput"
        class="form-control mb-3"
        placeholder="Search Member">
-<a href="../../modules/members/add-member.php">
+       <div class="sidebar">
+       <a href="<?php echo BASE_URL; ?>dashboard.php">
+
+    <i class="fa fa-dashboard"></i>
+
+    Dashboard
+
+</a>
+<a href="<?php echo BASE_URL; ?>modules/members/add-member.php">
 
     <i class="fa fa-user-plus"></i>
 
     Add Member
 
 </a>
-
-<a href="../../modules/members/manage-members.php">
+<a href="<?php echo BASE_URL; ?>modules/members/manage-members.php">
 
     <i class="fa fa-users"></i>
 
     Manage Members
 
 </a>
+
 <script>
 
 document.getElementById("searchInput")
@@ -41,8 +50,34 @@ document.getElementById("searchInput")
 });
 
 </script>
-<?php
+<a href="<?php echo BASE_URL; ?>modules/monthly-payments/add-payment.php">
 
-include('includes/footer.php');
+    <i class="fa fa-money-bill"></i>
 
-?>
+    Add Payment
+
+</a>
+
+<a href="<?php echo BASE_URL; ?>modules/monthly-payments/manage-payments.php">
+
+    <i class="fa fa-list"></i>
+
+    Manage Payments
+
+</a>
+
+<a href="<?php echo BASE_URL; ?>modules/monthly-payments/unpaid-members.php">
+
+    <i class="fa fa-exclamation-circle"></i>
+
+    Unpaid Members
+
+</a>
+<a href="<?php echo BASE_URL; ?>auth/logout.php">
+
+    <i class="fa fa-sign-out-alt"></i>
+
+    Logout
+
+</a>
+</div>

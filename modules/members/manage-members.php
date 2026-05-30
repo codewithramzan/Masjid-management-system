@@ -1,3 +1,4 @@
+
 <?php
 
 include('../../config/session.php');
@@ -15,7 +16,9 @@ ORDER BY member_id DESC
 $result = mysqli_query($conn, $query);
 
 ?>
+
 <div class="main-content">
+   
 
 <div class="card p-4">
 
