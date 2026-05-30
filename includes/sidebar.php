@@ -25,6 +25,13 @@
     Manage Members
 
 </a>
+<a href="<?php echo BASE_URL; ?>modules/monthly-payments/unpaid-members.php">
+
+    <i class="fa fa-exclamation-circle"></i>
+
+    Unpaid Members
+
+</a>
 
 <script>
 
@@ -66,11 +73,21 @@ document.getElementById("searchInput")
 
 </a>
 
-<a href="<?php echo BASE_URL; ?>modules/monthly-payments/unpaid-members.php">
 
-    <i class="fa fa-exclamation-circle"></i>
 
-    Unpaid Members
+<a href="<?php echo BASE_URL; ?>modules/friday_chanda/add-chanda.php">
+
+    <i class="fa fa-mosque"></i>
+
+    Add Friday Chanda
+
+</a>
+
+<a href="<?php echo BASE_URL; ?>modules/friday_chanda/manage-chanda.php">
+
+    <i class="fa fa-list"></i>
+
+    Manage Chanda
 
 </a>
 <a href="<?php echo BASE_URL; ?>auth/logout.php">
