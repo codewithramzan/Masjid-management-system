@@ -47,25 +47,27 @@ if(isset($_POST['add_chanda']))
         mysqli_insert_id($conn);
 
         $fundQuery = "
-        INSERT INTO fund_transactions
-        (
+       INSERT INTO fund_transactions
+            (
             transaction_type,
+            fund_type,
             amount,
             transaction_date,
             reference_id,
             reference_table,
             created_by
-        )
+            )
 
-        VALUES
-        (
+            VALUES
+            (
             'Friday Chanda',
+            'General Fund',
             '$amount',
             '$collection_date',
             '$last_id',
             'friday_collections',
             '$created_by'
-        )
+            )
         ";
 
         mysqli_query($conn, $fundQuery);

@@ -93,6 +93,7 @@ if(isset($_POST['add_payment']))
         INSERT INTO fund_transactions
         (
             transaction_type,
+            fund_type,
             amount,
             transaction_date,
             reference_id,
@@ -103,6 +104,7 @@ if(isset($_POST['add_payment']))
         VALUES
         (
             'Monthly Payment',
+            'Salary Fund',
             '$amount',
             '$payment_date',
             '$last_id',
