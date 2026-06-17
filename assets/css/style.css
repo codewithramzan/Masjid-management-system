@@ -2,13 +2,34 @@ body{
     background:#f4f6f9;
     font-family: Arial, sans-serif;
 }
+html,
+body{
+    height:100%;
+}
 
 .sidebar{
-    width:250px;
-    height:100vh;
     background:#0b5d3b;
+    width:250px;
     position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    z-index:1000;
+    padding:10px;
 }
+.sidebar input{
+    position:sticky;
+    top:0;
+    background:white;
+    margin-bottom:10px;
+}
+canvas{
+    max-height:300px;
+}
+
 
 .sidebar a{
     color:white;
@@ -24,6 +45,7 @@ body{
 .main-content{
     margin-left:250px;
     padding:20px;
+    min-height:100vh;
 }
 
 .card-box{
