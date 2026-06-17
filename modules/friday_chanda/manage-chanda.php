@@ -36,7 +36,7 @@ Manage Friday Chanda
 <th>Amount</th>
 <th>Date</th>
 <th>Notes</th>
-
+<th width="150">Actions</th>
 </tr>
 
 </thead>
@@ -70,6 +70,26 @@ Rs.
 <td>
 
 <?php echo $row['notes']; ?>
+
+</td>
+<td>
+
+<a
+href="edit-chanda.php?id=<?php echo $row['friday_id']; ?>"
+class="btn btn-warning btn-sm">
+
+Edit
+
+</a>
+
+<a
+href="delete-chanda.php?id=<?php echo $row['friday_id']; ?>"
+class="btn btn-danger btn-sm"
+onclick="return confirm('Delete this Chanda Record?')">
+
+Delete
+
+</a>
 
 </td>
 
