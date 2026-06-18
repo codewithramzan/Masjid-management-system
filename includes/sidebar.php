@@ -146,6 +146,95 @@
 		</ul>
 	  </div>
 	</li>
+	<!-- Expenses Menu -->
+
+<li class="nav-item">
+
+<a class="nav-link d-flex justify-content-between align-items-center"
+data-bs-toggle="collapse"
+href="#expenseMenu">
+
+<span>
+💸 Expenses
+</span>
+
+</a>
+
+<div class="collapse" id="expenseMenu">
+
+<ul class="nav flex-column ms-4">
+
+<li>
+<a href="<?php echo BASE_URL; ?>modules/expenses/add-expense.php"
+class="nav-link text-secondary">
+
+Add Expense
+
+</a>
+</li>
+
+<li>
+<a href="<?php echo BASE_URL; ?>modules/expenses/manage-expenses.php"
+class="nav-link text-secondary">
+
+Manage Expenses
+ 
+</a>
+</li>
+
+<li>
+<a href="<?php echo BASE_URL; ?>modules/expenses/expense-report.php"
+class="nav-link text-secondary">
+
+Expense Report
+
+</a>
+</li>
+
+</ul>
+
+</div>
+
+</li>
+<li class="nav-item">
+
+<a class="nav-link d-flex justify-content-between align-items-center"
+data-bs-toggle="collapse"
+href="#fundMenu">
+
+<span>
+📒 Fund Ledger
+</span>
+
+</a>
+
+<div class="collapse" id="fundMenu">
+
+<ul class="nav flex-column ms-4">
+
+<li>
+<a href="<?php echo BASE_URL; ?>modules/fund-transactions/manage-transactions.php"
+class="nav-link text-secondary">
+
+All Transactions
+
+</a>
+</li>
+
+<li>
+<a href="<?php echo BASE_URL; ?>modules/fund-transactions/fund-ledger-report.php"
+class="nav-link text-secondary">
+
+Ledger Report
+
+</a>
+</li>
+
+</ul>
+
+</div>
+
+</li>
 
 	<!-- Logout (fixed: now wrapped in <li>) -->
 	<li class="nav-item mt-3 ">
