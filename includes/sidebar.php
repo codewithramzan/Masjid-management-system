@@ -235,6 +235,69 @@ Ledger Report
 </div>
 
 </li>
+<li class="nav-item">
+
+<a class="nav-link d-flex justify-content-between align-items-center"
+data-bs-toggle="collapse"
+href="#reportsMenu">
+
+<span>
+📑 Reports Center
+</span>
+
+</a>
+
+<div class="collapse" id="reportsMenu">
+
+<ul class="nav flex-column ms-4">
+
+<li>
+<a href="<?php echo BASE_URL; ?>modules/reports/monthly-report.php"
+class="nav-link">
+Monthly Report
+</a>
+</li>
+
+<li>
+<a href="<?php echo BASE_URL; ?>modules/reports/yearly-report.php"
+class="nav-link">
+Yearly Report
+</a>
+</li>
+
+<li>
+<a href="<?php echo BASE_URL; ?>modules/reports/member-report.php"
+class="nav-link">
+Member Collection Report
+</a>
+</li>
+
+<li>
+<a href="<?php echo BASE_URL; ?>modules/reports/donation-report.php"
+class="nav-link">
+Donation Report
+</a>
+</li>
+
+<li>
+<a href="<?php echo BASE_URL; ?>modules/reports/friday-report.php"
+class="nav-link">
+Friday Chanda Report
+</a>
+</li>
+
+<li>
+<a href="<?php echo BASE_URL; ?>modules/reports/financial-summary.php"
+class="nav-link">
+Financial Summary
+</a>
+</li>
+
+</ul>
+
+</div>
+
+</li>
 
 	<!-- Logout (fixed: now wrapped in <li>) -->
 	<li class="nav-item mt-3 ">
