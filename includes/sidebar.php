@@ -57,6 +57,30 @@
 		  <li class="nav-item">
 			<a href="<?php echo BASE_URL; ?>modules/monthly-payments/manage-payments.php" class="nav-link text-secondary">Manage Payments</a>
 		  </li>
+			<li class="nav-item">
+				<a href="<?php echo BASE_URL; ?>modules/monthly-payments/generate-bills.php"
+				class="nav-link text-secondary">
+
+				Generate Bills
+
+				</a>
+				</li>
+				<li class="nav-item">
+				<a href="<?php echo BASE_URL; ?>modules/monthly-payments/collect-payment.php"
+				class="nav-link text-secondary">
+
+				Collect Payments
+
+				</a>
+				</li>
+				<li class="nav-item">
+				<a href="<?php echo BASE_URL; ?>modules/monthly-payments/member-ledger.php"
+				class="nav-link text-secondary">
+
+				Member Ledger
+
+				</a>
+				</li>
 		  <li class="nav-item">
 			<a href="<?php echo BASE_URL; ?>modules/monthly-payments/unpaid-members.php" class="nav-link text-secondary">
 			  <i class="bi bi-person-x me-1"></i>  <!-- ✅ Fixed empty icon -->
@@ -299,12 +323,7 @@ Financial Summary
 
 </li>
 
-	<!-- Logout (fixed: now wrapped in <li>) -->
-	<li class="nav-item mt-3 ">
-	  <a href="<?php echo BASE_URL; ?>auth/logout.php" class="nav-link text-danger">
-		<i class="fa fa-sign-out-alt me-1"></i> Logout
-	  </a>
-	</li>
+
 
   </ul>  <!-- end nav -->
 

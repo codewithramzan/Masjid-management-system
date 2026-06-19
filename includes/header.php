@@ -1,14 +1,149 @@
-<?php include(__DIR__ . '/../config/constants.php'); ?>
+<?php include(__DIR__ . '/../config/constants.php'); 
+$username = $_SESSION['username'] ?? 'Admin';
+$role = $_SESSION['role'] ?? 'Administrator';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masjid Management System</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/style.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Masjid Management System</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/style.css">
    
+	  <style>
+		body {
+			margin: 0;
+			padding-top: 70px; /* height of header */
+		}
+		.top-header {
+			background: linear-gradient(90deg, #0b6b3a, #0f8f55);
+			padding: 10px 20px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			color: white;
+
+			/* 🔥 FIX THIS */
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 9999;
+		}
+
+		.brand {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.brand-title {
+			font-size: 20px;
+			font-weight: bold;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+
+		.brand-subtitle {
+			font-size: 12px;
+			opacity: 0.9;
+		}
+
+		.nav-menu {
+			display: flex;
+			align-items: center;
+			gap: 20px;
+		}
+
+		.nav-menu a {
+			color: white;
+			text-decoration: none;
+			font-weight: 500;
+		}
+
+		.nav-menu a:hover {
+			opacity: 0.8;
+		}
+
+		.user-box {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			margin-left: 15px;
+		}
+
+		.avatar {
+			width: 35px;
+			height: 35px;
+			border-radius: 50%;
+			background: white;
+			color: #0f8f55;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-weight: bold;
+		}
+
+		.user-text {
+			display: flex;
+			flex-direction: column;
+			line-height: 1.2;
+		}
+
+		.user-text small {
+			font-size: 11px;
+			opacity: 0.8;
+		}
+
+		.logout {
+			color: #ffd166 !important;
+		}
+	</style>
 </head>
 <body>
-     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<div class="top-header">
+
+	<!-- LEFT SIDE -->
+	<div class="brand">
+		<div class="brand-title">
+			🕌 Masjid Management System
+		</div>
+		<div class="brand-subtitle">
+			Financial & Donation Management Dashboard
+		</div>
+	</div>
+
+	<!-- RIGHT SIDE -->
+	<div class="nav-menu">
+
+		<a href="<?php echo BASE_URL; ?>dashboard.php">
+			📊 Dashboard
+		</a>
+
+		<a href="/modules/reports/index.php">
+			<i class="fa fa-chart-line"></i> Reports
+		</a>
+
+		<a class="logout" href="<?php echo BASE_URL; ?>auth/logout.php">
+			<i class="fa fa-right-from-bracket"></i> Logout
+		</a>
+     <!-- Logout (fixed: now wrapped in <li>) -->
+	
+		<div class="user-box">
+			<div class="avatar">
+				<?php echo strtoupper($username[0]); ?>
+			</div>
+
+			<div class="user-text">
+				<div><?php echo $username; ?></div>
+				<small><?php echo $role; ?></small>
+			</div>
+		</div>
+
+	</div>
+</div>
+	 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
