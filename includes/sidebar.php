@@ -1,4 +1,9 @@
+<?php
+// include('../../config/session.php');
+// include('../../config/permission.php');
+$role = $_SESSION['role'] ?? '';
 
+?>
 <div class="sidebar">
 
   <!-- Search Input (moved INSIDE sidebar) -->
@@ -18,28 +23,96 @@
 
 
 	<!-- Members Menu -->
-	<li class="nav-item">
-	  <a class="nav-link d-flex justify-content-between align-items-center"
-		 data-bs-toggle="collapse"
-		 href="#membersMenu"
-		 role="button"
-		 aria-expanded="false">
-		<span><i class="bi bi-people-fill me-2"></i>👥 Members</span>
-		<i class="bi bi-chevron-down"></i>
-	  </a>
-	  <div class="collapse show" id="membersMenu">
-		<ul class="nav flex-column ms-4">
-		  <li class="nav-item">
-			<a href="<?php echo BASE_URL; ?>modules/members/add-member.php" class="nav-link text-secondary">Add Member</a>
-		  </li>
-		  <li class="nav-item">
-			<a href="<?php echo BASE_URL; ?>modules/members/manage-members.php" class="nav-link text-secondary">Manage Members</a>
-		  </li>
-		</ul>
-	  </div>
-	</li>
+	<?php
+
+if(
+$role=='Super Admin'
+||
+$role=='Admin'
+||
+$role=='Accountant'
+||
+$role=='Imam'
+||
+$role=='Viewer'
+)
+{
+
+?>
+
+<li class="nav-item">
+
+<a class="nav-link d-flex justify-content-between align-items-center"
+data-bs-toggle="collapse"
+href="#membersMenu">
+
+<span>👥 Members</span>
+
+<i class="bi bi-chevron-down"></i>
+
+</a>
+
+<div class="collapse" id="membersMenu">
+
+<ul class="nav flex-column ms-4">
+
+<?php
+
+if(
+$role=='Super Admin'
+||
+$role=='Admin'
+)
+{
+
+?>
+
+<li>
+
+<a href="<?php echo BASE_URL; ?>modules/members/add-member.php"
+class="nav-link">
+
+Add Member
+
+</a>
+
+</li>
+
+<?php } ?>
+
+<li>
+
+<a href="<?php echo BASE_URL; ?>modules/members/manage-members.php"
+class="nav-link">
+
+Manage Members
+
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+</li>
+
+<?php } ?>
 
 	<!-- Monthly Collection Menu -->
+	 <?php
+
+if(
+$role=='Super Admin'
+||
+$role=='Admin'
+||
+$role=='Accountant'
+)
+{
+
+?>
+
 	<li class="nav-item">
 	  <a class="nav-link d-flex justify-content-between align-items-center"
 		 data-bs-toggle="collapse"
@@ -90,8 +163,20 @@
 		</ul>
 	  </div>
 	</li>
-
+  <?php } ?>
 	<!-- Friday Chanda Menu -->
+	 <?php
+
+if(
+$role=='Super Admin'
+||
+$role=='Admin'
+||
+$role=='Accountant'
+)
+{
+
+?>
 	<li class="nav-item">
 	  <a class="nav-link d-flex justify-content-between align-items-center"
 		 data-bs-toggle="collapse"
@@ -112,7 +197,21 @@
 		</ul>
 	  </div>
 	</li>
+	 <?php } ?>
+	
 	<!-- Donation chanda Menu -->
+	 <?php
+
+		if(
+		$role=='Super Admin'
+		||
+		$role=='Admin'
+		||
+		$role=='Accountant'
+		)
+		{
+
+		?>
 	<li class="nav-item">
 	  <a class="nav-link d-flex justify-content-between align-items-center"
 		 data-bs-toggle="collapse"
@@ -133,7 +232,50 @@
 		</ul>
 	  </div>
 	</li>
+	<?php } ?>
+	<!-- User Management Menu -->
+	 <?php
+
+	if($role=='Super Admin')
+	{
+
+	?>
+
+	<li class="nav-item">
+	  <a class="nav-link d-flex justify-content-between align-items-center"
+		 data-bs-toggle="collapse"
+		 href="#userManagementMenu"
+		 role="button"
+		 aria-expanded="false">
+		<span><i class="bi bi-building me-2"></i>👥User Management</span>
+		<i class="bi bi-chevron-down"></i>
+	  </a>
+	  <div class="collapse" id="userManagementMenu">
+		<ul class="nav flex-column ms-4">
+		  <li class="nav-item">
+			<a href="<?php echo BASE_URL; ?>modules/users/add-user.php" class="nav-link text-secondary">Add User</a>
+		  </li>
+		  <li class="nav-item">
+			<a href="<?php echo BASE_URL; ?>modules/users/manage-users.php" class="nav-link text-secondary">Manage Users</a>
+		  </li>
+		</ul>
+	  </div>
+	</li>
+  <?php } ?>
 	<!-- Imam salary Menu -->
+	 <?php
+
+		if(
+		$role=='Super Admin'
+		||
+		$role=='Admin'
+		||
+		$role=='accountant'
+		)
+		{
+
+		?>
+
 	<li class="nav-item">
 	  <a class="nav-link d-flex justify-content-between align-items-center"
 		 data-bs-toggle="collapse"
@@ -170,7 +312,20 @@
 		</ul>
 	  </div>
 	</li>
+	<?php } ?>
 	<!-- Expenses Menu -->
+	 <?php
+
+		if(
+		$role=='Super Admin'
+		||
+		$role=='Admin'
+		||
+		$role=='Accountant'
+		)
+		{
+
+		?>
 
 <li class="nav-item">
 
@@ -180,6 +335,7 @@ href="#expenseMenu">
 
 <span>
 💸 Expenses
+
 </span>
 
 </a>
@@ -220,6 +376,7 @@ Expense Report
 </div>
 
 </li>
+	<?php } ?>
 <li class="nav-item">
 
 <a class="nav-link d-flex justify-content-between align-items-center"
@@ -259,6 +416,21 @@ Ledger Report
 </div>
 
 </li>
+<?php
+if(
+$role=='Super Admin'
+||
+$role=='Admin'
+||
+$role=='Accountant'
+||
+$role=='Imam'
+||
+$role=='Viewer'
+)
+{
+
+?>
 <li class="nav-item">
 
 <a class="nav-link d-flex justify-content-between align-items-center"
@@ -322,9 +494,51 @@ Financial Summary
 </div>
 
 </li>
+<?php } ?>
 
+<li class="nav-item">
 
+<a class="nav-link d-flex justify-content-between align-items-center"
+data-bs-toggle="collapse"
+href="#accountMenu">
 
+<span>👤 My Account</span>
+
+<i class="bi bi-chevron-down"></i>
+
+</a>
+
+<div class="collapse" id="accountMenu">
+
+<ul class="nav flex-column ms-4">
+
+<li>
+
+<a href="<?php echo BASE_URL; ?>modules/users/my-profile.php"
+class="nav-link">
+
+👤 My Profile
+
+</a>
+
+</li>
+
+<li>
+
+<a href="<?php echo BASE_URL; ?>modules/users/change-password.php"
+class="nav-link">
+
+Change Password
+
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+</li>
   </ul>  <!-- end nav -->
 
 </div>  <!-- end sidebar -->

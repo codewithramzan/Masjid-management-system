@@ -3,7 +3,6 @@
 include('../config/database.php');
 
 session_start();
-
 $error = "";
 
 if(isset($_POST['login']))
@@ -11,9 +10,24 @@ if(isset($_POST['login']))
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $query = "SELECT * FROM users
-              WHERE username='$username'
-              LIMIT 1";
+   $query = "
+
+        SELECT
+
+        u.*,
+        r.role_name
+
+        FROM users u
+
+        INNER JOIN roles r
+
+        ON u.role_id = r.role_id
+
+        WHERE u.username='$username'
+
+        LIMIT 1
+
+        ";
 
     $result = mysqli_query($conn, $query);
 
@@ -23,11 +37,13 @@ if(isset($_POST['login']))
 
         if($password == $user['password'])
         {
-            $_SESSION['user_id'] = $user['user_id'];
+           $_SESSION['user_id']   = $user['user_id'];
 
             $_SESSION['full_name'] = $user['full_name'];
 
-            $_SESSION['role_id'] = $user['role_id'];
+            $_SESSION['role_id']   = $user['role_id'];
+
+            $_SESSION['role']      = $user['role_name'];
 
             header("Location: ../dashboard.php");
 

@@ -2,8 +2,9 @@
 <?php
 
 include('../../config/session.php');
+include('../../config/permission.php');
 include('../../config/database.php');
-
+$role = $_SESSION['role'] ?? '';
 include('../../includes/header.php');
 include('../../includes/sidebar.php');
 
@@ -18,7 +19,6 @@ $result = mysqli_query($conn, $query);
 ?>
 
 <div class="main-content">
-   
 
 <div class="card p-4">
 
@@ -39,8 +39,14 @@ Manage Members
 <th>Phone</th>
 <th>Monthly Amount</th>
 <th>Status</th>
-<th>Actions</th>
+<?php
+if($role== 'Super Admin' || $role== 'Admin' || $role == 'accountant')
+   {
+    
+?>
 
+ <th>Actions</th>
+<?php }?>
 </tr>
 
 </thead>
@@ -77,7 +83,11 @@ Rs.
 </td>
 
 <td>
-
+<?php
+if($role== 'Super Admin' || $role== 'Admin' || $role == 'accountant')
+   {
+    
+?>
 <a href="edit-member.php?id=<?php echo $row['member_id']; ?>"
    class="btn btn-primary btn-sm">
 
@@ -93,10 +103,12 @@ Delete
 </a>
 
 </td>
+<?php } ?>
+<?php } ?>
 
 </tr>
 
-<?php } ?>
+
 
 </tbody>
 
@@ -105,8 +117,4 @@ Delete
 </div>
 
 </div>
-<?php
-
-include('../../includes/footer.php');
-
-?>
+<?php include('../../includes/footer.php'); ?>
