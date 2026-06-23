@@ -6,9 +6,11 @@ include('../../config/database.php');
 include('../../includes/header.php');
 include('../../includes/sidebar.php');
 
+
 $message = '';
 
 if(isset($_POST['add_expense']))
+
 {
     $category_id =
     mysqli_real_escape_string(

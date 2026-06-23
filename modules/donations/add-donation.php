@@ -5,11 +5,20 @@ include('../../config/database.php');
 
 include('../../includes/header.php');
 include('../../includes/sidebar.php');
+include('../config/activity-log.php');
 
 $message = "";
 
 if(isset($_POST['add_donation']))
-{
+{   
+
+    addLog(
+        $conn,
+        $user['user_id'],
+        'LOGIN',
+        'Authentication',
+        'User Logged In'
+    );
     $donor_name = $_POST['donor_name'];
     $amount = $_POST['amount'];
     $donation_type = $_POST['donation_type'];

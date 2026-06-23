@@ -26,10 +26,21 @@ WHERE u.user_id='$user_id'
 LIMIT 1
 
 ";
+$imagePath = '../../assets/images/default-user.jpg';
 
 $result = mysqli_query($conn,$query);
 
 $user = mysqli_fetch_assoc($result);
+
+if(
+    !empty($user['profile_image']) &&
+    file_exists('../../uploads/users/'.$user['profile_image'])
+)
+{
+    $imagePath =
+    '../../uploads/users/'.$user['profile_image'];
+}
+
 
 ?>
 
@@ -61,9 +72,13 @@ $user = mysqli_fetch_assoc($result);
 
 <div class="mb-3">
 
-<i class="fas fa-user-circle"
-style="font-size:120px;color:#198754;">
-</i>
+<img
+src="<?php echo $imagePath; ?>"
+alt="Profile Image"
+class="rounded-circle shadow border"
+width="160"
+height="160"
+style="object-fit:cover;">
 
 </div>
 
@@ -182,6 +197,28 @@ Created At
 'd M Y h:i A',
 strtotime($user['created_at'])
 ); ?>
+
+</td>
+
+</tr>
+<tr>
+
+<th>
+Last Login
+</th>
+
+<td>
+
+<?php
+
+echo !empty($user['last_login'])
+? date(
+'d M Y h:i A',
+strtotime($user['last_login'])
+)
+: 'Never';
+
+?>
 
 </td>
 

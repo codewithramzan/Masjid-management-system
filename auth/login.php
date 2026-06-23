@@ -10,7 +10,7 @@ if(isset($_POST['login']))
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-   $query = "
+    $query = "
 
         SELECT
 
@@ -37,13 +37,29 @@ if(isset($_POST['login']))
 
         if($password == $user['password'])
         {
-           $_SESSION['user_id']   = $user['user_id'];
+            include('../config/activity-log.php');
 
-            $_SESSION['full_name'] = $user['full_name'];
+            addLog(
+                $conn,
+                $user['user_id'],
+                'LOGIN',
+                'Authentication',
+                'User Logged In'
+            );
 
-            $_SESSION['role_id']   = $user['role_id'];
+            $_SESSION['user_id']       = $user['user_id'];
 
-            $_SESSION['role']      = $user['role_name'];
+            $_SESSION['full_name']     = $user['full_name'];
+
+            $_SESSION['role_id']       = $user['role_id'];
+
+            $_SESSION['role']          = $user['role_name'];
+
+            // ✅ ADDED: Save username to session
+            $_SESSION['username']      = $user['username'];
+
+            // ✅ ADDED: Save profile image to session
+            $_SESSION['profile_image'] = $user['profile_image'] ?? '';
 
             header("Location: ../dashboard.php");
 
